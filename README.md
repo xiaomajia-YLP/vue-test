@@ -1,29 +1,50 @@
 # vue
 
-## Project setup
+## 项目启动
+
 ```
+# Project setup
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+# Compiles and hot-reloads for development
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+# Compiles and minifies for production
 npm run build
-```
 
-### Run your tests
-```
 npm run test
+# Run your tests
+
+# Lints and fixes files
+npm run lint
+
+# 进入图形化管理界面
+vue ui
 ```
 
-### Lints and fixes files
+## 项目结构
+
+基于 vue-cli 3.2.1
+
 ```
-npm run lint
+├── README.md
+├── package.json
+├── package-lock.json
+├── babel.config.js
+├── .gitignore
+├── src
+│   ├── app.vue
+│   ├── main.js
+│   ├── assets
+│   │   └── logo.png
+│   └── components
+│       └── HelloWorld.vue
+├── public
+│   ├── favicon.ico
+│   └── index.html
+└── node_modules
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
