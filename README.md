@@ -28,17 +28,25 @@ vue ui
 
 ```
 ├── README.md
+├── .env
+├── .env.dev
 ├── package.json
-├── package-lock.json
+├── vue.config.js
 ├── babel.config.js
+├── package-lock.json
 ├── .gitignore
 ├── src
-│   ├── app.vue
+│   ├── App.vue
+│   ├── router.js // vue-router
+│   ├── store.js  // vuex
 │   ├── main.js
 │   ├── assets
 │   │   └── logo.png
-│   └── components
-│       └── HelloWorld.vue
+│   ├── components
+│   │   └── HelloWorld.vue
+│   └── views
+│       ├── about.vue
+│       └── Home.vue
 ├── public
 │   ├── favicon.ico
 │   └── index.html
