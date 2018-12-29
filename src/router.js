@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 
 Vue.use(Router)
-
+console.log(process.env.BASE_URL)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
