@@ -39,9 +39,6 @@ module.exports = {
 
     config.plugin('define')
       .tap(args => {
-        console.log('--------------------------')
-        console.log(args);
-        console.log('--------------------------')
         let name = 'process.env';
         args[0][name] = merge(args[0][name], cfg)
         return args
