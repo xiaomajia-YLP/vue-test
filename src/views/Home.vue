@@ -2,16 +2,13 @@
   <div class="home">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <div>
-      <input
-        type="text"
-        v-model="firstName"
-      >
+      <input type="text" v-model="firstName" >
       <br>
       <br>
-      <input
-        type="text"
-        v-model="lastName"
-      >
+      <input type="text" v-model="lastName" >
+      <br>
+      <br>
+      <input type="text" v-model="others" >
       <br>
       <br>
       <span>{{ fullName }}</span>
@@ -35,7 +32,8 @@ export default {
     return {
       firstName: '',
       lastName: '',
-      fullName2: ''
+      fullName2: '',
+      others: ''
     }
   },
   
