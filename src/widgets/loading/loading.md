@@ -160,7 +160,7 @@ export default {
 下面我们便来封装一下该组件：
 
 1. 新建一个 loading.js 文件，引入我们的 loading.vue 组件，然后通过 Vue.extend()方法创建了一个构造器 LoadingPlugin；
-2. 其次我们再通过 new LoadingPlugin()创建了$vm 实例，并挂载到一个 div 元素上；
+2. 其次我们再通过 new LoadingPlugin()创建了\$vm 实例，并挂载到一个 div 元素上；
 3. 最后我们需要通过 document.body.appendChild($vm.\$el)将其插入到 DOM 节点中。
 
 当我们创建了$vm实例后，我们可以访问该实例的属性和方法，比如通过$vm.show 就可以改变 loading 组件的 show 值来控制其显示隐藏。
@@ -197,4 +197,17 @@ npm publish
 
 ```
 npm install xxxxxx --save
+```
+
+### 5. 全局注册组件
+
+```javascript
+import Loading from "@/widgets/loading/loading.js";
+Vue.use(Loading); // 注册 Loading
+```
+
+### 6. 调用组件
+
+```javascript
+this.$loading.hide();
 ```
