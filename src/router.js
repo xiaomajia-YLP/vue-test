@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 
 Vue.use(Router)
-console.log(process.env);
+// console.log(process.env);
 
 let router = new Router({
   mode: 'history',
@@ -31,17 +31,18 @@ let router = new Router({
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   let title = to.meta && to.meta.title
-//   if (title) {
-//     document.title = title
-//   }
-//   // if (to.name === 'home') {
-//   //   // 拦截并跳转至 page2 单页
-//   //   Vue.$openRouter({
-//   //     name: 'page2'
-//   //   });
-//   // }
-// })
+router.beforeEach((to, from, next) => {
+  let title = to.meta && to.meta.title
+  if (title) {
+    document.title = title
+  }
+  next()
+  // if (to.name === 'home') {
+  //   // 拦截并跳转至 page2 单页
+  //   Vue.$openRouter({
+  //     name: 'page2'
+  //   });
+  // }
+})
 
 export default router

@@ -40,8 +40,6 @@ export default {
   // 使用 computed
   computed: {
     fullName() {
-      console.log(111111111111);
-      
       return this.firstName + ' ' + this.lastName
     }
   },
@@ -49,13 +47,9 @@ export default {
   // 使用 watch
   watch: {
     firstName: function(newVal, oldVal) {
-      console.log(222222222222222);
-      
       this.fullName2 = newVal + ' ' + this.lastName;
     },
     lastName: function(newVal, oldVal) {
-      console.log(333333333333333);
-      
       this.fullName2 = this.firstName + ' ' + newVal;
     },
   }
