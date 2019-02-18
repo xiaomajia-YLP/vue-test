@@ -1,22 +1,12 @@
 <template>
-  <div class="home">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <div>
-      <input type="text" v-model="firstName" >
-      <br>
-      <br>
-      <input type="text" v-model="lastName" >
-      <br>
-      <br>
-      <input type="text" v-model="others" >
-      <br>
-      <br>
-      <span>{{ fullName }}</span>
-      <br>
-      <br>
-      <span>{{ fullName2 }}</span>
-    </div>
-  </div>
+  <ul class="puzzle-warp">
+    <li
+      :class="{'puzzle': true, 'puzzle-empty': !puzzle}"
+      v-for="(puzzle, index) in puzzles"
+      :key="index"
+      v-text="puzzle"
+    ></li>
+  </ul>
 </template>
 
 <script>
@@ -30,28 +20,33 @@ export default {
   // },
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      fullName2: '',
-      others: ''
+      puzzles: Array.from({ length: 15 }, (value, index) => index + 1)
     }
   },
-  
-  // 使用 computed
-  computed: {
-    fullName() {
-      return this.firstName + ' ' + this.lastName
-    }
-  },
-  
-  // 使用 watch
-  watch: {
-    firstName: function(newVal, oldVal) {
-      this.fullName2 = newVal + ' ' + this.lastName;
-    },
-    lastName: function(newVal, oldVal) {
-      this.fullName2 = this.firstName + ' ' + newVal;
-    },
-  }
+
 }
 </script>
+<style lang="less" scoped>
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.puzzle-warp {
+  width: 360px;
+  height: 360px;
+  background-color: #ccc;
+}
+.puzzle {
+  width: 90px;
+  height: 90px;
+  float: left;
+  border: 1px solid #999;
+  background-color: rgb(241, 180, 65);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+
