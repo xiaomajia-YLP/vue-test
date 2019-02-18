@@ -54,8 +54,28 @@ export default {
 
       // 和为空的位置交换
       if (left === '' && index % 4) {
-        
+        this.setPuzzle(index, -1)
+      } else if (right === '' && 3 !== index % 4) {
+        this.setPuzzle(index, 1)
+      } else if (top === '') {
+        this.setPuzzle(index, -4)
+      } else if (bottom === '') {
+        this.setPuzzle(index, 4)
       }
+    },
+    // 判断是否成功
+    judgeSuccess(){
+      let puzzles = this.puzzles;
+      if (puzzles[15] === '') {
+        let newPuzzles = puzzles.slice(0, 15)
+        let isPass = newPuzzles.every((v, i)=>{
+          return v === i + 1
+        })
+        if (isPass) {
+          alert('congratulations!')
+        }
+      }
+
     }
   },
   created() {
