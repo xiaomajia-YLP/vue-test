@@ -6,9 +6,17 @@
         v-for="(puzzle, index) in puzzles"
         :key="index"
         v-text="puzzle"
+        @click="tapPuzzle(index)"
       ></li>
     </ul>
-    <button class="puzzle-reset-btn">重置游戏</button>
+    <button
+      class="puzzle-reset-btn"
+      @click="resetPuzzle()"
+    >重置游戏</button>
+    <button
+      class="puzzle-reset-btn"
+      @click="reloadGame()"
+    >重新开始</button>
   </div>
 </template>
 
@@ -16,7 +24,6 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import utils from '../utils/utils.js'
-console.log(utils);
 
 export default {
   name: 'home',
@@ -25,15 +32,21 @@ export default {
   // },
   data() {
     return {
-      puzzles: Array.from({ length: 15 }, (value, index) => index + 1)
+      puzzles: [],
+      lastPuzzels: []
     }
   },
   methods: {
-    // 重置，随机乱序
+    // 重置，随机乱序(开始新的一局游戏)
     resetPuzzle(){
-      let arr = utils.shuffle(this.puzzles)
+      let arr = utils.shuffle(Array.from({ length: 15 }, (value, index) => index + 1))
       arr.push('')
       this.puzzles = arr
+      this.lastPuzzels = utils.deepCopyArr(arr)  // 直接=赋值为浅拷贝，改变其中一方的值，会相互影响
+    },
+    // 重新开始此局游戏
+    reloadGame(){
+      this.puzzles = utils.deepCopyArr(this.lastPuzzels)
     },
     // 设置数组的值
     setPuzzle(index, num){
@@ -75,7 +88,11 @@ export default {
           alert('congratulations!')
         }
       }
-
+    },
+    // 点击滑块
+    tapPuzzle(index){
+      this.move(index);
+      this.judgeSuccess()
     }
   },
   created() {

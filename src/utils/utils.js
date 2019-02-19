@@ -11,6 +11,12 @@ let shuffle = (arr) => {
   return arr
 }
 
+// 数组深拷贝
+let deepCopyArr = (arr) => {
+  return JSON.parse(JSON.stringify(arr))
+}
+
 export default {
-  shuffle
+  shuffle,
+  deepCopyArr
 }
