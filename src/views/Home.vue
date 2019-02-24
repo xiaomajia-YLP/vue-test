@@ -99,7 +99,7 @@ export default {
   },
   mounted() {
     this.resetPuzzle()
-    console.log(a);
+    // console.log(a);
   },
 }
 </script>

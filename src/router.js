@@ -27,6 +27,14 @@ let router = new Router({
       meta: {
         title: '关于'
       }
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import( /* webpackChunkName: "about" */ './views/Test.vue'),
+      meta: {
+        title: '测试'
+      }
     }
   ]
 })
