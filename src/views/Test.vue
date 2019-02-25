@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <button @click="test()">修改</button>
-    <div>{{obj.a}}</div>
+    <x-button size="default" color="warn" @click="test()">修改</x-button>
+    <x-button disabled></x-button>
   </div>
 </template>
 <script>
+import xButton from '../components/x-button/x-button';
 export default {
   data() {
     return {
@@ -20,7 +21,9 @@ export default {
           
       }
   },
-  components: {},
+  components: {
+    xButton
+  },
   watch: {
     obj: {
       handler: function(newVal, oldVal) {
