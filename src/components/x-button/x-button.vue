@@ -2,7 +2,11 @@
   <button
     :class="'x-button x-button-size-'+size +' x-button-'+color"
     :disabled="disabled"
-  >2131231</button>
+    @click="handleClick()"
+  >
+    <slot name="icon"></slot>
+    <slot>按钮</slot>
+  </button>
 </template>
 <script>
   function oneOf(val, validList) {
@@ -32,7 +36,14 @@
         type: Boolean,
         default: false
       }
-    }
+    },
+    methods: {
+      handleClick(event){
+        console.log(222222);
+        
+        this.$emit('on-click', event)
+      }
+    },
   }
 </script>
 <style lang='less' scoped>
@@ -54,10 +65,17 @@
   padding: 6px 12px;
   font-size: 14px;
   border-radius: 4px;
-  transition: color 0.2s linear, background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
+  transition: color 0.2s linear, background-color 0.2s linear,
+    border 0.2s linear, box-shadow 0.2s linear;
   color: #515a6e;
   background-color: #fff;
   border-color: #dcdee2;
+}
+.x-button:disabled {
+  opacity: 0.5;
+}
+.x-button-default:disabled {
+  background-color: #e6e6e6;
 }
 .x-button-size-small {
   padding: 5px 10px;
