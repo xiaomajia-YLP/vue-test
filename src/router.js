@@ -9,7 +9,7 @@ let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
-      path: '/',
+      path: '/game',
       name: 'home',
       component: Home,
       meta: {
@@ -37,7 +37,7 @@ let router = new Router({
       }
     },
     {
-      path: '/user',
+      path: '/',
       name: 'user',
       component: () => import( /* webpackChunkName: "about" */ './views/User.vue'),
       meta: {

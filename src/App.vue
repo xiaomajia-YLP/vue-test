@@ -1,38 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/game">Home</router-link> |
       <router-link to="/about">About</router-link>|
       <router-link to="/test">Test</router-link>|
-      <router-link to="/user">User</router-link>
+      <router-link to="/">User</router-link>
     </div>
     <router-view />
   </div>
 </template>
 <script>
+import mixins_user from './mixins/user.js';
 export default {
+  mixins: [mixins_user],
   data(){
     return {
-      userInfo: {}
     }
   },
   provide() {
     return {
       app: this
     }
-  },
-  methods: {
-    getUserInfo(){
-    this.userInfo = {
-      id: '10129',
-      name: '小马甲',
-      gender: '0',
-      pic: 'http://img.mp.sohu.com/upload/20170801/e0b1ca9516344dcfbb90d6456fbbefd1_th.png',
-    }
-  },
-  },
-  mounted() {
-    this.getUserInfo()
   },
 }
 </script>
