@@ -31,7 +31,7 @@ let router = new Router({
     {
       path: '/test',
       name: 'test',
-      component: () => import( /* webpackChunkName: "about" */ './views/Test.vue'),
+      component: () => import( /* webpackChunkName: "test" */ './views/Test.vue'),
       meta: {
         title: '测试'
       }
@@ -39,7 +39,7 @@ let router = new Router({
     {
       path: '/',
       name: 'user',
-      component: () => import( /* webpackChunkName: "about" */ './views/User.vue'),
+      component: () => import( /* webpackChunkName: "user" */ './views/User.vue'),
       meta: {
         title: '个人中心'
       }

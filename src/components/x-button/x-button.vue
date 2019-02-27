@@ -2,22 +2,15 @@
   <button
     :class="'x-button x-button-size-'+size +' x-button-'+color"
     :disabled="disabled"
-    @click="handleClick()"
+    @click="handleClick"
   >
-    <slot name="icon"></slot>
+    <x-icon :icon="icon"></x-icon>
     <slot>按钮</slot>
   </button>
 </template>
 <script>
-  function oneOf(val, validList) {
-    for (let i = 0; i < validList.length; i++) {
-      if (val === validList[i]) {
-        return true;
-      }
-    }
-    return false;
-  }
-
+  import { oneOf } from '../../utils/common.js';
+  import xIcon from '../x-icon/x-icon.vue';
   export default {
     props: {
       size: {
@@ -35,6 +28,10 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      icon: {
+        type: String,
+        value: ''
       }
     },
     methods: {
@@ -44,6 +41,9 @@
         this.$emit('on-click', event)
       }
     },
+    components: {
+      xIcon
+    }
   }
 </script>
 <style lang='less' scoped>

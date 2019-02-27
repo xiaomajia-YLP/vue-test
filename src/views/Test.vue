@@ -1,21 +1,21 @@
 <template>
   <div class="container">
     <!-- button -->
-    <x-button size="default" color="warn" @on-click="handleClick()" >
-      <x-icon icon="search"></x-icon>
-      搜索
-    </x-button>
+    <button @click="handleClick">触发事件</button>
     <!-- ref -->
     <com-a ref="box"></com-a>
-    <com-b></com-b>
+    <com-b @on-click="test"></com-b>
   </div>
 </template>
 <script>
-import xButton from '../components/x-button/x-button';
-import xIcon from '../components/x-icon/x-icon';
 import comA from '../components/com/comA';
 import comB from '../components/com/comB';
+
+import Emitter from '../mixins/emitter.js';
+
 export default {
+  mixins: [Emitter],
+  name: 'test',
   data() {
     return {
       title: 'Test.vue的title'
@@ -23,13 +23,14 @@ export default {
   },
   methods: {
     handleClick(){
-      console.log(1111111111);
+      console.log(22222222222);
+      this.broadcast('comB', 'on-message', '111', '222');
     },
-    
+    test(...msg){
+      console.log(msg);
+    }
   },
   components: {
-    xButton,
-    xIcon,
     comA,
     comB
   },
@@ -48,7 +49,8 @@ export default {
     // }
   },
   mounted() {
-    const box = this.$refs.box;
+    
+    
   },
 };
 </script>

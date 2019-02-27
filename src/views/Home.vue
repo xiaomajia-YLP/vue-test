@@ -11,11 +11,11 @@
     </ul>
     <button
       class="puzzle-reset-btn"
-      @click="resetPuzzle()"
+      @click="resetPuzzle"
     >重置游戏</button>
     <button
       class="puzzle-reset-btn"
-      @click="reloadGame()"
+      @click="reloadGame"
     >重新开始</button>
   </div>
 </template>

@@ -8,10 +8,10 @@ Vue.config.productionTip = false
 // 如果是非线上环境:
 if (process.env.NODE_ENV !== 'production') {
   // 加载 VConsole
-  var VConsole = require('vconsole/dist/vconsole.min.js');
-  var vConsole = new VConsole();
+  // var VConsole = require('vconsole/dist/vconsole.min.js');
+  // var vConsole = new VConsole();
   // 使用 performance 开启性能追踪
-  Vue.config.performance = true; 
+  // Vue.config.performance = true; 
 }
 
 // Vue.config.errorHandler = function (err, vm, info) {

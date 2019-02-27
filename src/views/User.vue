@@ -9,9 +9,9 @@
     <x-button
       size="default"
       color="primary"
-      @on-click="updateUserInfo()"
+      @on-click="updateUserInfo"
+      icon="search"
     >
-      <x-icon icon="search"></x-icon>
       搜索
     </x-button>
   </div>
