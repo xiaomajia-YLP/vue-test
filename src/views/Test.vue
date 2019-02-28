@@ -1,58 +1,42 @@
 <template>
-  <div class="container">
-    <!-- button -->
-    <button @click="handleClick">触发事件</button>
-    <!-- ref -->
-    <com-a ref="box"></com-a>
-    <com-b @on-click="test"></com-b>
+  <div class='app-container'>
+    <x-form
+      :model="formValidate"
+      :rules="ruleValidate"
+    >
+      <x-form-item
+        label="用户名"
+        prop="name"
+      >
+        <x-input></x-input>
+      </x-form-item>
+    </x-form>
   </div>
 </template>
 <script>
-import comA from '../components/com/comA';
-import comB from '../components/com/comB';
-
-import Emitter from '../mixins/emitter.js';
+import xForm from "../components/x-form/x-form";
+import xFormItem from "../components/x-form/x-form-item";
+import xInput from "../components/x-input/x-input";
 
 export default {
-  mixins: [Emitter],
-  name: 'test',
   data() {
     return {
-      title: 'Test.vue的title'
+      formValidate: {},
+      ruleValidate: {
+        name: [
+          { required: true, message: "请输入活动名称", trigger: "blur" },
+          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
+        ]
+      }
     };
   },
-  methods: {
-    handleClick(){
-      console.log(22222222222);
-      this.broadcast('comB', 'on-message', '111', '222');
-    },
-    test(...msg){
-      console.log(msg);
-    }
-  },
   components: {
-    comA,
-    comB
+    xForm,
+    xFormItem,
+    xInput
   },
-  provide:{
-    nick: 'JJ'
-  },
-  watch: {
-    // obj: {
-    //   handler: function(newVal, oldVal) {
-    //     console.log(newVal.a);
-    //   },
-    //   deep: true, // 如果不加 deep: true，我们只能监听 obj 的改变，并不会触发handler回调
-    //   immediate: true
-    //   // 添加 immediate: true 配置，其会立即以 obj 的当前值触发回调
-    //   // 不加只会打印2,3,4,5...  加了之后1,2,3,4,5...
-    // }
-  },
-  mounted() {
-    
-    
-  },
+  methods: {}
 };
 </script>
-<style lang="less" scoped>
+<style lang='less' scoped>
 </style>

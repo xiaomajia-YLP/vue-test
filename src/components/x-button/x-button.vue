@@ -31,7 +31,7 @@
       },
       icon: {
         type: String,
-        value: ''
+        default: ''
       }
     },
     methods: {
