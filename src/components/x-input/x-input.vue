@@ -36,30 +36,31 @@ export default {
     handleInput(e) {
       const value = e.target.value;
       this.currentValue = value;
-      this.$emit('input', value);
-      this.dispatch('xFormItem', 'on-input-change', value);
+      this.$emit("input", value);
+      this.dispatch("xFormItem", "on-input-change", value);
     },
     handleBlur(e) {
-      this.dispatch('xFormItem', 'on-input-blur', this.currentValue);
+      this.dispatch("xFormItem", "on-input-blur", this.currentValue);
     }
   }
 };
 </script>
 <style lang='less' scoped>
 .x-input {
-    display: inline-block;
-    width: 100%;
-    height: 28px;
-    line-height: 1.2;
-    padding: 2px 7px;
-    font-size: 14px;
-    border: 1px solid #dcdee2;
-    border-radius: 4px;
-    color: #515a6e;
-    background-color: #fff;
-    background-image: none;
-    position: relative;
-    cursor: text;
-    transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
+  display: inline-block;
+  width: 100%;
+  height: 28px;
+  line-height: 1.2;
+  padding: 2px 7px;
+  font-size: 14px;
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  color: #515a6e;
+  background-color: #fff;
+  background-image: none;
+  position: relative;
+  cursor: text;
+  transition: border 0.2s ease-in-out, background 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 </style>

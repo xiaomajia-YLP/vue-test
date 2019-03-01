@@ -26,16 +26,6 @@ export default {
       fields: [] // 缓存所有 FormItem 实例
     };
   },
-  created() {
-    // form-item 组件渲染时，将实例缓存到form中
-    this.$on("on-form-item-add", (field) => {
-      if (field) this.fields.push(field);
-    });
-    // form-item 组件销毁时，将实例从缓存中移除
-    this.$on("on-form-item-remove", (field) => {
-      if (field.prop) this.fields.splice(this.fields.indexOf(field), 1);
-    });
-  },
   methods: {
     // 公开方法：全部重置数据
     resetFields() {
@@ -65,7 +55,31 @@ export default {
         });
       });
     }
-  }
+  },
+  created() {
+    console.log("----------- x-form: created -------------");
+    
+    // // form-item 组件渲染时，将实例缓存到form中
+    // this.$on("on-form-item-add", (field) => {
+    //   if (field) this.fields.push(field);
+    // });
+    // // form-item 组件销毁时，将实例从缓存中移除
+    // this.$on("on-form-item-remove", (field) => {
+    //   if (field.prop) this.fields.splice(this.fields.indexOf(field), 1);
+    // });
+  },
+  mounted() {
+    console.log("----------- x-form: mounted -------------");
+    // form-item 组件渲染时，将实例缓存到form中
+    this.$on("on-form-item-add", (field) => {
+      if (field) this.fields.push(field);
+    });
+    // form-item 组件销毁时，将实例从缓存中移除
+    this.$on("on-form-item-remove", (field) => {
+      if (field.prop) this.fields.splice(this.fields.indexOf(field), 1);
+    });
+  },
+  
 };
 </script>
 

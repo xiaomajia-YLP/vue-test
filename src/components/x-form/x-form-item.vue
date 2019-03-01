@@ -44,24 +44,6 @@ export default {
       return this.form.model[this.prop];
     }
   },
-  // 组件渲染时，将实例缓存到form中
-  mounted() {
-    // 若没有传入prop，则无需校验，也就不用缓存
-    console.log("x-form-item ===" + this.prop);
-
-    if (this.prop) {
-      this.dispatch("xForm", "on-form-item-add", this);
-
-      // 设置初始值，以便在重置时恢复默认值
-      this.initialValue = this.fieldValue;
-
-      this.setRules();
-    }
-  },
-  // 组件销毁时，将实例从缓存中移除
-  beforeDestroy() {
-    this.dispatch("xForm", "on-form-item-remove", this);
-  },
   methods: {
     // 从 Form 的 rules 属性中，获取当前 FormItem 的校验规则
     getRules() {
@@ -137,6 +119,25 @@ export default {
     onFieldBlur() {
       this.validate("blur");
     }
+  },
+  // 组件渲染时，将实例缓存到form中
+  mounted() {
+    // 若没有传入prop，则无需校验，也就不用缓存
+    console.log("---------- x-form-item: mounted ------------");
+
+    if (this.prop) {
+      console.log("x-form-item ===" + this.prop);
+      this.dispatch("xForm", "on-form-item-add", this);
+
+      // 设置初始值，以便在重置时恢复默认值
+      this.initialValue = this.fieldValue;
+
+      this.setRules();
+    }
+  },
+  // 组件销毁时，将实例从缓存中移除
+  beforeDestroy() {
+    this.dispatch("xForm", "on-form-item-remove", this);
   }
 };
 </script>
