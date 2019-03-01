@@ -2,9 +2,8 @@
   <button
     :class="'x-button x-button-size-'+size +' x-button-'+color"
     :disabled="disabled"
-    @click="handleClick"
   >
-    <x-icon :icon="icon"></x-icon>
+    <x-icon :icon="icon" class="x-button-icon"></x-icon>
     <slot>按钮</slot>
   </button>
 </template>
@@ -35,11 +34,11 @@
       }
     },
     methods: {
-      handleClick(event){
-        console.log(222222);
+      // handleClick(event){
+      //   // console.log(222222);
         
-        this.$emit('on-click', event)
-      }
+      //   // this.$emit('on-click', event)
+      // }
     },
     components: {
       xIcon
@@ -70,6 +69,8 @@
   color: #515a6e;
   background-color: #fff;
   border-color: #dcdee2;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 .x-button:disabled {
   opacity: 0.5;
@@ -108,5 +109,8 @@
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
+}
+.x-button-icon {
+  padding-right: 4px;
 }
 </style>

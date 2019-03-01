@@ -28,15 +28,44 @@ export default {
   },
   created() {
     // form-item 组件渲染时，将实例缓存到form中
-    this.$on("on-form-item-add", field => {
+    this.$on("on-form-item-add", (field) => {
       if (field) this.fields.push(field);
     });
     // form-item 组件销毁时，将实例从缓存中移除
-    this.$on("on-form-item-remove", field => {
+    this.$on("on-form-item-remove", (field) => {
       if (field.prop) this.fields.splice(this.fields.indexOf(field), 1);
     });
   },
-  methods: {}
+  methods: {
+    // 公开方法：全部重置数据
+    resetFields() {
+      this.fields.forEach(field => {
+        field.resetField();
+      });
+    },
+    // 公开方法：全部校验数据，支持 Promise
+    validated(callback) {
+      return new Promise(reslove => {
+        let valid = true;
+        let count = 0;
+
+        this.fields.forEach(field => {
+          field.validate("", errors => {
+            if (errors) {
+              valid = false;
+            }
+            if (++count === this.fields.length) {
+              // 全部完成
+              reslove(valid);
+              if (typeof callback === "function") {
+                callback(valid);
+              }
+            }
+          });
+        });
+      });
+    }
+  }
 };
 </script>
 
