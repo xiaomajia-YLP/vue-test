@@ -32,11 +32,13 @@
       >
         <x-input v-model="formValidate.address"></x-input>
       </x-form-item>
-      <x-form-item class="form-button">
+      <x-form-item
+        class="form-button"
+      >
         <x-button
           color="success"
           icon="check-circle"
-          @click.native="handleSubmit"
+          @on-click="handleSubmit"
         >提交</x-button>
         <x-button
           color="default"
@@ -45,6 +47,7 @@
         >重置</x-button>
       </x-form-item>
     </x-form>
+
   </div>
 </template>
 <script>
@@ -87,15 +90,11 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("handleSubmit");
-
       this.$refs.form.validated(valid => {
         if (valid) {
-          // console.log('验证通过')
-          window.alert("验证通过");
+          console.log("验证通过");
         } else {
-          // console.error('表单校验失败');
-          window.alert("表单校验失败");
+          console.error("表单校验失败");
         }
       });
     },

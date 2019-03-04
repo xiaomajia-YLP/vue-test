@@ -2,6 +2,8 @@
   <button
     :class="'x-button x-button-size-'+size +' x-button-'+color"
     :disabled="disabled"
+    @click="handleClick"
+    type="button"
   >
     <x-icon :icon="icon" class="x-button-icon"></x-icon>
     <slot>按钮</slot>
@@ -34,11 +36,9 @@
       }
     },
     methods: {
-      // handleClick(event){
-      //   // console.log(222222);
-        
-      //   // this.$emit('on-click', event)
-      // }
+      handleClick(event){
+        this.$emit('on-click', event)
+      }
     },
     components: {
       xIcon

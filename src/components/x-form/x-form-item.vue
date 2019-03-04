@@ -17,7 +17,7 @@
 import Emitter from "../../mixins/emitter.js";
 import AsyncValidator from "async-validator";
 export default {
-  name: "iFormItem",
+  name: "xFormItem",
   mixins: [Emitter],
   inject: ["form"],
   props: {
@@ -49,13 +49,14 @@ export default {
     getRules() {
       let rules = this.form.rules;
       rules = rules ? rules[this.prop] : [];
+      
       return [].concat(rules || []);
     },
 
     // 监听 input 的change/blur事件
     setRules() {
       const rules = this.getRules();
-
+      
       if (rules.length) {
         rules.every(rule => {
           // 如果当前校验规则中有必填项，则标记出来
@@ -99,7 +100,7 @@ export default {
 
       // 以下为 async-validator 库的调用方法
       let descriptor = {};
-      descriptor[this.prop] = rules;
+      descriptor[this.prop] = rule;
 
       const validator = new AsyncValidator(descriptor);
       let model = {};
@@ -109,7 +110,6 @@ export default {
       validator.validate(model, { firstFields: true }, errors => {
         this.validateState = !errors ? "success" : "error";
         this.validateMessage = errors ? errors[0].message : "";
-
         callback(this.validateMessage);
       });
     },
@@ -123,10 +123,9 @@ export default {
   // 组件渲染时，将实例缓存到form中
   mounted() {
     // 若没有传入prop，则无需校验，也就不用缓存
-    console.log("---------- x-form-item: mounted ------------");
+    console.log("x-form-item: mounted ----- " + this.prop);
 
     if (this.prop) {
-      console.log("x-form-item ===" + this.prop);
       this.dispatch("xForm", "on-form-item-add", this);
 
       // 设置初始值，以便在重置时恢复默认值
@@ -144,7 +143,7 @@ export default {
 <style lang="less" scoped>
 .x-form-item {
   display: flex;
-  align-items: center;
+  align-items: top;
   line-height: 1;
   margin-bottom: 10px;
 }
@@ -152,6 +151,7 @@ export default {
   margin-right: 5px;
   min-width: 80px;
   text-align: right;
+  line-height: 34px;
 }
 .x-form-item-label-required:before {
   content: "*";
@@ -159,5 +159,8 @@ export default {
 }
 .x-form-item-message {
   color: red;
+  text-align: left;
+  padding-top: 5px;
+  font-size: 14px;
 }
 </style>
