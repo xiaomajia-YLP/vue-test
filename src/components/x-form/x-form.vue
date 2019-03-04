@@ -61,7 +61,6 @@ export default {
     console.log("--- x-form: created ---");
     // form-item 组件渲染时，将实例缓存到form中
     this.$on("on-form-item-add", (field) => {
-      console.log("xForm $on:" + field.prop);
       if (field) this.fields.push(field);
     });
     // form-item 组件销毁时，将实例从缓存中移除

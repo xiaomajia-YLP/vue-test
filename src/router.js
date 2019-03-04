@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Game from './views/Game.vue'
 
 Vue.use(Router)
 // console.log(process.env);
@@ -10,10 +10,10 @@ let router = new Router({
   base: process.env.BASE_URL,
   routes: [{
       path: '/game',
-      name: 'home',
-      component: Home,
+      name: 'game',
+      component: Game,
       meta: {
-        title: '首页'
+        title: '数字迷盘'
       }
     },
     {
@@ -42,6 +42,14 @@ let router = new Router({
       component: () => import( /* webpackChunkName: "user" */ './views/User.vue'),
       meta: {
         title: '个人中心'
+      }
+    },
+    {
+      path: '/form',
+      name: 'form',
+      component: () => import( /* webpackChunkName: "form" */ './views/Form.vue'),
+      meta: {
+        title: '表单组件封装'
       }
     }
   ]

@@ -123,8 +123,6 @@ export default {
   // 组件渲染时，将实例缓存到form中
   mounted() {
     // 若没有传入prop，则无需校验，也就不用缓存
-    console.log("x-form-item: mounted ----- " + this.prop);
-
     if (this.prop) {
       this.dispatch("xForm", "on-form-item-add", this);
 
