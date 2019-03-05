@@ -36,11 +36,28 @@
         label="爱好"
         prop="hobby"
       >
-        <x-checkbox v-model="formValidate.hobby" class="checkbox" trueValue="电影" falseValue="" value="电影">电影</x-checkbox>
+        <x-checkbox-group :value="checkValueIntial">
+          <x-checkbox
+            class="checkbox"
+            trueValue="电影"
+            falseValue=""
+            label="电影"
+          >电影</x-checkbox>
+          <x-checkbox
+            class="checkbox"
+            trueValue="动漫"
+            falseValue=""
+            label="动漫"
+          >动漫</x-checkbox>
+          <x-checkbox
+            class="checkbox"
+            trueValue="绘画"
+            falseValue=""
+            label="绘画"
+          >绘画</x-checkbox>
+        </x-checkbox-group>
       </x-form-item>
-      <x-form-item
-        class="form-button"
-      >
+      <x-form-item class="form-button">
         <x-button
           color="success"
           icon="check-circle"
@@ -60,7 +77,8 @@
 import xFormItem from "../components/x-form/x-form-item";
 import xForm from "../components/x-form/x-form";
 import xInput from "../components/x-input/x-input";
-import xCheckbox from "../components/x-checkbox/x-checkbox";
+import xCheckbox from "../components/x-checkbox-group/x-checkbox";
+import xCheckboxGroup from "../components/x-checkbox-group/x-checkbox-group";
 import xButton from "../components/x-button/x-button";
 
 export default {
@@ -86,10 +104,9 @@ export default {
         address: [
           { min: 3, max: 30, message: "长度在 3 到 30 个字符", trigger: "blur" }
         ],
-        hobby: [
-          { required: true, message: "爱好至少选一项", trigger: "blur" },
-        ]
-      }
+        hobby: [{ required: true, message: "爱好至少选一项", trigger: "blur" }]
+      },
+      checkValueIntial: ['电影']
     };
   },
   components: {
@@ -97,7 +114,8 @@ export default {
     xFormItem,
     xInput,
     xButton,
-    xCheckbox
+    xCheckbox,
+    xCheckboxGroup
   },
   methods: {
     handleSubmit() {
