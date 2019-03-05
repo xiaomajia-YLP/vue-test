@@ -33,6 +33,12 @@
         <x-input v-model="formValidate.address"></x-input>
       </x-form-item>
       <x-form-item
+        label="爱好"
+        prop="hobby"
+      >
+        <x-checkbox v-model="formValidate.hobby" class="checkbox" trueValue="电影" falseValue="" value="电影">电影</x-checkbox>
+      </x-form-item>
+      <x-form-item
         class="form-button"
       >
         <x-button
@@ -54,6 +60,7 @@
 import xFormItem from "../components/x-form/x-form-item";
 import xForm from "../components/x-form/x-form";
 import xInput from "../components/x-input/x-input";
+import xCheckbox from "../components/x-checkbox/x-checkbox";
 import xButton from "../components/x-button/x-button";
 
 export default {
@@ -78,6 +85,9 @@ export default {
         ],
         address: [
           { min: 3, max: 30, message: "长度在 3 到 30 个字符", trigger: "blur" }
+        ],
+        hobby: [
+          { required: true, message: "爱好至少选一项", trigger: "blur" },
         ]
       }
     };
@@ -86,7 +96,8 @@ export default {
     xForm,
     xFormItem,
     xInput,
-    xButton
+    xButton,
+    xCheckbox
   },
   methods: {
     handleSubmit() {
@@ -107,5 +118,9 @@ export default {
 <style lang='less' scoped>
 .form-button {
   justify-content: center;
+}
+.checkbox {
+  vertical-align: middle;
+  line-height: 34px;
 }
 </style>

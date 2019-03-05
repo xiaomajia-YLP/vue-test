@@ -144,6 +144,7 @@ export default {
   align-items: top;
   line-height: 1;
   margin-bottom: 10px;
+  text-align: left;
 }
 .x-form-item-label {
   margin-right: 5px;
