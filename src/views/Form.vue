@@ -1,73 +1,28 @@
 <template>
   <div class='app-container'>
-    <x-form
-      :model="formValidate"
-      :rules="ruleValidate"
-      ref="form"
-    >
-      <x-form-item
-        label="用户名"
-        prop="name"
-      >
+    <x-form :model="formValidate" :rules="ruleValidate" ref="form">
+      <x-form-item label="用户名" prop="name">
         <x-input v-model="formValidate.name"></x-input>
       </x-form-item>
-      <x-form-item
-        label="邮箱"
-        prop="email"
-      >
+      <x-form-item label="邮箱" prop="email">
         <x-input v-model="formValidate.email"></x-input>
       </x-form-item>
-      <x-form-item
-        label="密码"
-        prop="password1"
-      >
-        <x-input
-          v-model="formValidate.password1"
-          type="password"
-        ></x-input>
+      <x-form-item label="密码" prop="password1">
+        <x-input v-model="formValidate.password1" type="password"></x-input>
       </x-form-item>
-      <x-form-item
-        label="地址"
-        prop="address"
-      >
+      <x-form-item label="地址" prop="address">
         <x-input v-model="formValidate.address"></x-input>
       </x-form-item>
-      <x-form-item
-        label="爱好"
-        prop="hobby"
-      >
-        <x-checkbox-group :value="checkValueIntial">
-          <x-checkbox
-            class="checkbox"
-            trueValue="电影"
-            falseValue=""
-            label="电影"
-          >电影</x-checkbox>
-          <x-checkbox
-            class="checkbox"
-            trueValue="动漫"
-            falseValue=""
-            label="动漫"
-          >动漫</x-checkbox>
-          <x-checkbox
-            class="checkbox"
-            trueValue="绘画"
-            falseValue=""
-            label="绘画"
-          >绘画</x-checkbox>
+      <x-form-item label="爱好" prop="hobby">
+        <x-checkbox-group v-model="formValidate.hobby">
+          <x-checkbox class="checkbox" label="电影">电影</x-checkbox>
+          <x-checkbox class="checkbox" label="动漫">动漫</x-checkbox>
+          <x-checkbox class="checkbox" label="绘画">绘画</x-checkbox>
         </x-checkbox-group>
       </x-form-item>
       <x-form-item class="form-button">
-        <x-button
-          color="success"
-          icon="check-circle"
-          @on-click="handleSubmit"
-        >提交</x-button>
-        <x-button
-          color="default"
-          icon="info-circle"
-          @click.native="handleReset"
-        >重置</x-button>
+        <x-button color="success" icon="check-circle" @on-click="handleSubmit">提交</x-button>
+        <x-button color="default" icon="info-circle" @click.native="handleReset">重置</x-button>
       </x-form-item>
     </x-form>
 
@@ -86,7 +41,8 @@ export default {
     return {
       formValidate: {
         name: "",
-        email: ""
+        email: "",
+        hobby: ["电影"]
       },
       ruleValidate: {
         name: [
@@ -105,8 +61,7 @@ export default {
           { min: 3, max: 30, message: "长度在 3 到 30 个字符", trigger: "blur" }
         ],
         hobby: [{ required: true, message: "爱好至少选一项", trigger: "blur" }]
-      },
-      checkValueIntial: ['电影']
+      }
     };
   },
   components: {

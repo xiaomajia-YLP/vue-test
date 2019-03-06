@@ -1,15 +1,9 @@
 <template>
   <div class="x-form-item">
-    <label
-      v-if="label"
-      :class="{ 'x-form-item-label-required': isRequired, 'x-form-item-label': true }"
-    >{{ label }}</label>
+    <label v-if="label" :class="{ 'x-form-item-label-required': isRequired, 'x-form-item-label': true }">{{ label }}</label>
     <div>
       <slot></slot>
-      <div
-        v-if="validateState === 'error'"
-        class="x-form-item-message"
-      >{{ validateMessage }}</div>
+      <div v-if="validateState === 'error'" class="x-form-item-message">{{ validateMessage }}</div>
     </div>
   </div>
 </template>
@@ -49,14 +43,14 @@ export default {
     getRules() {
       let rules = this.form.rules;
       rules = rules ? rules[this.prop] : [];
-      
+
       return [].concat(rules || []);
     },
 
     // 监听 input 的change/blur事件
     setRules() {
       const rules = this.getRules();
-      
+
       if (rules.length) {
         rules.every(rule => {
           // 如果当前校验规则中有必填项，则标记出来
