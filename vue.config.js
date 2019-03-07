@@ -69,6 +69,16 @@ module.exports = {
         ]
       }
     }
+
+    // 2019.03.07 update
+    // 解决 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. 报错问题
+    config.resolve = {
+      extensions: ['.js', '.vue', '.json', ".css"],
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': resolve('src'),
+      }
+    }
   },
 
   devServer: {
