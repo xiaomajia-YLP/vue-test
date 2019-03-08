@@ -16,8 +16,9 @@ const AlertComponent = Vue.extend({
   }
 })
 
+// const component = new AlertComponent({ el: '#app' })
 const component = new AlertComponent().$mount();
-console.log(component);
+// console.log(component);
 
 document.body.appendChild(component.$el)
 
