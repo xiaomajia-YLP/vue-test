@@ -1,37 +1,40 @@
 <template>
   <div>
-    <!-- <com-c></com-c> -->
+    <h3>动态渲染 .vue 文件的组件—— Display</h3>
+
+    <x-display :code="code"></x-display>
   </div>
 </template>
 <script>
-import comC from "../components/com/comC";
+import xDisplay from "../components/x-display/x-display";
+import defaultCode from "./default-code.js";
 
-import Vue from 'vue';
-const AlertComponent = Vue.extend({
-  template: '<div>{{message}}</div>',
-  data(){
-    return {
-      message: 'xiaomajia'
-    }
-  }
-})
+// import Vue from 'vue';
+// const AlertComponent = Vue.extend({
+//   template: '<div>{{message}}</div>',
+//   data(){
+//     return {
+//       message: 'xiaomajia'
+//     }
+//   }
+// })
 
-// const component = new AlertComponent({ el: '#app' })
-const component = new AlertComponent().$mount();
-// console.log(component);
+// // const component = new AlertComponent({ el: '#app' })
+// const component = new AlertComponent().$mount();
+// // console.log(component);
 
-document.body.appendChild(component.$el)
-
+// document.body.appendChild(component.$el)
 
 export default {
   data() {
-    return {};
+    return {
+      code: defaultCode
+    };
   },
   components: {
-    comC
+    xDisplay
   },
   methods: {}
 };
 </script>
-<style lang='less' scoped>
-</style>
+
