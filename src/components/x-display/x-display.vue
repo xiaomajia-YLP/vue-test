@@ -84,14 +84,15 @@ export default {
       }
     },
     // 当 Display 组件销毁时，也要手动销毁 extend 创建的实例以及上面的 css：
-    destroyeCode() {
+    destroyCode() {
+      
       const $target = document.getElementById(this.id);
       if ($target) {
         $target.parentNode.removeChild($target);
       }
       if (this.component) {
-        this.refs.display.removeChild(this.component.$el);
-        this.component.$desroy();
+        this.$refs.display.removeChild(this.component.$el);
+        this.component.$destroy();
         this.component = null;
       }
     }

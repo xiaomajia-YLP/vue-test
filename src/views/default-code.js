@@ -10,7 +10,7 @@ const code =
     export default {
         data () {
             return {
-                message: ''
+                message: '789'
             }
         },
         methods: {
