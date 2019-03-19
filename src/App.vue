@@ -7,6 +7,13 @@
       <router-link to="/form">Form</router-link>|
       <router-link to="/test">Test</router-link>
     </div>
+    <div id="nav">
+      <router-link to="/display">Display</router-link><!-- |
+      <router-link to="/game">Game</router-link> |
+      <router-link to="/about">About</router-link>|
+      <router-link to="/form">Form</router-link>|
+      <router-link to="/test">Test</router-link> -->
+    </div>
     <router-view />
   </div>
 </template>
@@ -32,9 +39,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-top: 20px;
 }
 #nav {
-  padding: 30px;
+  padding: 10px;
   a {
     font-weight: bold;
     color: #2c3e50;

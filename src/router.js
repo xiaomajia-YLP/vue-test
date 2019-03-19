@@ -51,6 +51,14 @@ let router = new Router({
       meta: {
         title: '表单组件封装'
       }
+    },
+    {
+      path: '/display',
+      name: 'display',
+      component: () => import( /* webpackChunkName: "display" */ './views/Display.vue'),
+      meta: {
+        title: '动态渲染.vue组件'
+      }
     }
   ]
 })
