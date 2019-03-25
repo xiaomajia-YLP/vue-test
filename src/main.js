@@ -3,7 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import Alert from '../src/components/x-alert/alert.js'
+
 Vue.config.productionTip = false
+
+Vue.prototype.$Alert = Alert
 
 // 如果是非线上环境:
 if (process.env.NODE_ENV !== 'production') {

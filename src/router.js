@@ -59,6 +59,14 @@ let router = new Router({
       meta: {
         title: '动态渲染.vue组件'
       }
+    },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: () => import( /* webpackChunkName: "alert" */ './views/Alert.vue'),
+      meta: {
+        title: '全局提示组件'
+      }
     }
   ]
 })
