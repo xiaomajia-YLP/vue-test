@@ -9,8 +9,8 @@
     </div>
     <div id="nav">
       <router-link to="/display">Display</router-link>|
-      <router-link to="/alert">Alert</router-link><!--  |
-      <router-link to="/about">About</router-link>|
+      <router-link to="/alert">Alert</router-link>|
+      <router-link to="/render">Render</router-link><!--  |
       <router-link to="/form">Form</router-link>|
       <router-link to="/test">Test</router-link> -->
     </div>

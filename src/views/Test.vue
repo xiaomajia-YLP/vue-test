@@ -1,25 +1,28 @@
 <template>
   <div>
-    <heading level="1">这是一个title1</heading>
-    <heading level="2">这是一个title2</heading>
-    <heading level="3">这是一个title3</heading>
-    <heading level="4">这是一个title4</heading>
-    <heading level="5">这是一个title5</heading>
-    <heading level="6">这是一个title6</heading>
+    <x-component :render="render"></x-component>
   </div>
 </template>
 <script>
-import box from "../components/render/render.js";
-import heading from "../components/render/heading.js";
+import xComponent from "../components/functionalRender/x-component.vue";
 export default {
   data() {
     return {
-      is_show: true
+      render: h => {
+        return h(
+          "div",
+          {
+            style: {
+              color: "red"
+            }
+          },
+          "自定义内容"
+        );
+      }
     };
   },
   components: {
-    box,
-    heading
+    xComponent
   },
   methods: {}
 };

@@ -67,6 +67,14 @@ let router = new Router({
       meta: {
         title: '全局提示组件'
       }
+    },
+    {
+      path: '/render',
+      name: 'render',
+      component: () => import( /* webpackChunkName: "render" */ './views/Render.vue'),
+      meta: {
+        title: 'render.js'
+      }
     }
   ]
 })
