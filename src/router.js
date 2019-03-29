@@ -75,6 +75,14 @@ let router = new Router({
       meta: {
         title: 'render.js'
       }
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: () => import( /* webpackChunkName: "table" */ './views/Table.vue'),
+      meta: {
+        title: 'table组件'
+      }
     }
   ]
 })
