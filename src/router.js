@@ -79,9 +79,17 @@ let router = new Router({
     {
       path: '/table',
       name: 'table',
-      component: () => import( /* webpackChunkName: "table" */ './views/Table.vue'),
+      component: () => import( /* webpackChunkName: "table" */ './views/Table-render.vue'),
       meta: {
-        title: 'table组件'
+        title: 'table-render'
+      }
+    },
+    {
+      path: '/tables',
+      name: 'tables',
+      component: () => import( /* webpackChunkName: "tables" */ './views/Table-slot.vue'),
+      meta: {
+        title: 'table-slot'
       }
     }
   ]

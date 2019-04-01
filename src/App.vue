@@ -11,8 +11,8 @@
       <router-link to="/display">Display</router-link> |
       <router-link to="/alert">Alert</router-link> |
       <router-link to="/render">Render</router-link> |
-      <router-link to="/table">Table</router-link><!-- |
-      <router-link to="/test">Test</router-link> -->
+      <router-link to="/table">Table</router-link>|
+      <router-link to="/tables">TableSlot</router-link><!--  -->
     </div>
     <router-view />
   </div>
