@@ -1,32 +1,28 @@
 <template>
-  <div class="cont-a">
-    <div>组件A</div>
-    <com-b></com-b>
+  <div class="container">
+    <button @click="decrease()">组件A button</button>
   </div>
 </template>
 <script>
-import comB from "./comB";
 export default {
   name: "comA",
   props: {},
   data() {
     return {
-      name: "Spencer Reid"
+      num: 1,
+      deg: 180
     };
   },
   methods: {
-    sayHi() {
-      console.log("component-a: function sayhi");
+    decrease(){
+      this.$EventBus.$emit('decreased', {
+        num: this.num,
+        deg: this.deg
+      })
     }
   },
-  components: {
-    comB
-  }
+  created() {}
 };
 </script>
-<style lang='less' scoped>
-.cont-a {
-  padding: 15px;
-  background-color: #f3d490;
-}
+<style lang="less" scoped>
 </style>

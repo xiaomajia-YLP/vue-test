@@ -7,7 +7,11 @@ import Alert from '../src/components/x-alert/alert.js'
 
 Vue.config.productionTip = false
 
+// 全局alert组件
 Vue.prototype.$Alert = Alert
+
+// eventBus 引入：初始化一个 全局的事件总线
+Vue.prototype.$EventBus = new Vue()
 
 // 如果是非线上环境:
 if (process.env.NODE_ENV !== 'production') {

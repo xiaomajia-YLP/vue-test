@@ -1,44 +1,52 @@
 <template>
-  <div class='app-container'>
-    <x-checkbox-group v-model="hobby">
-      <x-checkbox class="checkbox" label="电影">电影</x-checkbox>
-      <x-checkbox class="checkbox" label="动漫">动漫</x-checkbox>
-      <x-checkbox class="checkbox" label="绘画">绘画</x-checkbox>
-    </x-checkbox-group>
+  <div class="container">
+    <p>firstName: {{ firstName }}</p>
+    <p>lastName: {{ lastName }}</p>
+    <p>fullName: {{ fullName }}</p>
+    <p>computed name: {{ name }}</p>
+    <br />
+    <button @click="rename()">add</button>
   </div>
 </template>
 <script>
-import xCheckbox from "../components/x-choice/x-choice";
-import xCheckboxGroup from "../components/x-choice/x-choice-group";
-
 export default {
   data() {
     return {
-      hobby:[]
+      firstName: "Spencer",
+      lastName: "Reid",
+      fullName: ""
     };
   },
-  components: {
-    xCheckbox,
-    xCheckboxGroup
-  },
   methods: {
-    handleSubmit() {
-
+    rename() {
+      this.name = "Derek Morgan";
+    }
+  },
+  components: {},
+  computed: {
+    name: {
+      get: function() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set: function(val) {
+        let _name = val.split(' ');
+        [this.firstName, this.lastName] = _name
+      }
+    }
+  },
+  watch: {
+    firstName(val) {
+      this.fullName = `${val} ${this.lastName}`;
     },
-    handleReset() {
+    lastName: {
+      handler: function (newVal, oldVal) {
+        this.fullName = `${this.firstName} ${newVal}`
+      },
+      immediate: true,
+      deep: true,
     }
   }
 };
 </script>
-<style lang='less' scoped>
-.form-button {
-  justify-content: center;
-}
-.checkbox {
-  vertical-align: middle;
-  line-height: 34px;
-  margin-right: 5px;
-  width: 50px;
-}
+<style lang="less" scoped>
 </style>
-
